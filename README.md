@@ -17,6 +17,7 @@ To use this API, you'll need to have Node.js and npm installed on your computer.
 This API was built with:
 
 - Node.js
+- NestJS
 - TypeScript
 - GraphQL
 - MongoDB

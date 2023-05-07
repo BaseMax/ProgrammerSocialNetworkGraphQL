@@ -10,7 +10,7 @@ To use this API, you'll need to have Node.js and npm installed on your computer.
 - Run `npm install` to install the required dependencies.
 - Set up a MongoDB database and configure the connection in `src/config/index.js`.
 - Run npm start to start the GraphQL server.
-- Open a web browser and go to `http://localhost:4000/graphql` to use the GraphiQL interface.
+- Open a web browser and go to `http://localhost:4000/graphql` to use the GraphQL interface.
 
 ## Technologies Used
 

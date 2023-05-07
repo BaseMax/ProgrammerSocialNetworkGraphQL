@@ -12,6 +12,15 @@ To use this API, you'll need to have Node.js and npm installed on your computer.
 - Run npm start to start the GraphQL server.
 - Open a web browser and go to `http://localhost:4000/graphql` to use the GraphiQL interface.
 
+## Technologies Used
+
+This API was built with:
+
+- Node.js
+- TypeScript
+- GraphQL
+- MongoDB
+
 ## Usage
 
 ### Queries
@@ -51,6 +60,7 @@ query {
 ```
 
 Sort developers by name
+
 ```graphql
 query {
   developers(sortBy: "lastName") {
@@ -132,15 +142,9 @@ mutation {
 }
 ```
 
-## Technologies Used
+## Authors
 
-This API was built with:
+- Amir Hossain
+- Max Base
 
-- Node.js
-- TypeScript
-- GraphQL
-- MongoDB
-
-## Acknowledgements
-
-This project was inspired by the idea of a social network for programmers and developers, and is intended to showcase how GraphQL can be used to build powerful, flexible APIs for web applications.
+Copyright 2023, Max Base

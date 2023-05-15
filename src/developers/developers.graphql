@@ -1,11 +1,26 @@
 type Developer {
-  # Example field (placeholder)
-  exampleField: Int
+  id: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  skills: [Skill!]!
+}
+
+type Skill {
+  language: String!
+  framework: String!
+}
+
+input SkillInput {
+  language: String!
+  framework: String!
 }
 
 input CreateDeveloperInput {
-  # Example field (placeholder)
-  exampleField: Int
+  firstName: String!
+  lastName: String!
+  email: String!
+  skills: [SkillInput!]!
 }
 
 input UpdateDeveloperInput {

@@ -8,8 +8,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class SkillInput {
+    language: string;
+    framework: string;
+}
+
+export class DeveloperFilterInput {
+    language: string;
+    framework: string;
+}
+
 export class CreateDeveloperInput {
-    exampleField?: Nullable<number>;
+    firstName: string;
+    lastName: string;
+    email: string;
+    skills: SkillInput[];
 }
 
 export class UpdateDeveloperInput {
@@ -17,13 +30,22 @@ export class UpdateDeveloperInput {
 }
 
 export class Developer {
-    exampleField?: Nullable<number>;
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    skills: Skill[];
+}
+
+export class Skill {
+    language: string;
+    framework: string;
 }
 
 export abstract class IQuery {
     abstract developers(): Nullable<Developer>[] | Promise<Nullable<Developer>[]>;
 
-    abstract developer(id: number): Nullable<Developer> | Promise<Nullable<Developer>>;
+    abstract developersWithFilter(filter?: Nullable<DeveloperFilterInput>): Nullable<Developer>[] | Promise<Nullable<Developer>[]>;
 }
 
 export abstract class IMutation {

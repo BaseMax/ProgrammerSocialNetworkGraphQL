@@ -16,6 +16,11 @@ input SkillInput {
   framework: String!
 }
 
+input DeveloperFilterInput {
+  language: String!
+  framework: String!
+}
+
 input CreateDeveloperInput {
   firstName: String!
   lastName: String!
@@ -29,7 +34,7 @@ input UpdateDeveloperInput {
 
 type Query {
   developers: [Developer]!
-  developer(id: Int!): Developer
+  developersWithFilter(filter: DeveloperFilterInput): [Developer]!
 }
 
 type Mutation {

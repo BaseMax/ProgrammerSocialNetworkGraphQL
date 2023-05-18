@@ -2,8 +2,6 @@ import { Prisma } from "@prisma/client";
 import { DeveloperFilterInput } from "src/graphql";
 import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { DevelopersService } from "./developers.service";
-import { UpdateDeveloperInput } from "./dto/update-developer.input";
-
 
 @Resolver("Developer")
 export class DevelopersResolver {
@@ -28,13 +26,12 @@ export class DevelopersResolver {
   }
 
   @Mutation("updateDeveloper")
-  update(
-    @Args("updateDeveloperInput") updateDeveloperInput: UpdateDeveloperInput
+  updateDeveloper(
+    @Args("id") id: string,
+    @Args("updateDeveloperInput")
+    updateDeveloperInput: Prisma.DeveloperUpdateInput
   ) {
-    return this.developersService.update(
-      updateDeveloperInput.id,
-      updateDeveloperInput
-    );
+    return this.developersService.updateDeveloper(id, updateDeveloperInput);
   }
 
   @Mutation("removeDeveloper")

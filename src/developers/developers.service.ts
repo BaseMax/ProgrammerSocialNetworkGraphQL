@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "prisma/prisma.service";
 import { Developer, Prisma } from "@prisma/client";
 import { DeveloperFilterInput } from "src/graphql";
-import { UpdateDeveloperInput } from "./dto/update-developer.input";
 
 @Injectable()
 export class DevelopersService {
@@ -30,8 +29,14 @@ export class DevelopersService {
     });
   }
 
-  async update(id: number, updateDeveloperInput: UpdateDeveloperInput) {
-    return `This action updates a #${id} developer`;
+  async updateDeveloper(
+    id: string,
+    updateDeveloperInput: Prisma.DeveloperUpdateInput
+  ): Promise<Developer> {
+    return this.prisma.developer.update({
+      where: { id },
+      data: updateDeveloperInput,
+    });
   }
 
   async remove(id: number) {

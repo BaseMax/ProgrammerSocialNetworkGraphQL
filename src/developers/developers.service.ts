@@ -1,14 +1,16 @@
 import { Injectable } from "@nestjs/common";
-import { CreateDeveloperInput } from "./dto/create-developer.input";
-import { UpdateDeveloperInput } from "./dto/update-developer.input";
 import { PrismaService } from "prisma/prisma.service";
-import { DeveloperFilterInput } from "./../graphql";
+import { Prisma } from "@prisma/client";
+import { DeveloperFilterInput } from "src/graphql";
+import { UpdateDeveloperInput } from "./dto/update-developer.input";
 
 @Injectable()
 export class DevelopersService {
-  constructor(private  prisma: PrismaService) {}
-  create(createDeveloperInput: CreateDeveloperInput) {
-    return "This action adds a new developer";
+  constructor(private prisma: PrismaService) {}
+  create(createDeveloperInput: Prisma.DeveloperCreateInput) {
+    return this.prisma.developer.create({
+      data: createDeveloperInput,
+    });
   }
 
   findAll() {

@@ -1,8 +1,9 @@
-import { DeveloperFilterInput } from 'src/graphql';
+import { Prisma } from "@prisma/client";
+import { DeveloperFilterInput } from "src/graphql";
 import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { DevelopersService } from "./developers.service";
-import { CreateDeveloperInput } from "./dto/create-developer.input";
 import { UpdateDeveloperInput } from "./dto/update-developer.input";
+
 
 @Resolver("Developer")
 export class DevelopersResolver {
@@ -10,7 +11,8 @@ export class DevelopersResolver {
 
   @Mutation("createDeveloper")
   create(
-    @Args("createDeveloperInput") createDeveloperInput: CreateDeveloperInput
+    @Args("createDeveloperInput")
+    createDeveloperInput: Prisma.DeveloperCreateInput
   ) {
     return this.developersService.create(createDeveloperInput);
   }

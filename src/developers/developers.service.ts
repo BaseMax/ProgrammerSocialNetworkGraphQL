@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "prisma/prisma.service";
 import { Developer, Prisma } from "@prisma/client";
-import { DeveloperFilterInput } from "src/graphql";
+import { DeveloperFilterInput, SortByParams } from "src/graphql";
 
 @Injectable()
 export class DevelopersService {
@@ -12,8 +12,11 @@ export class DevelopersService {
     });
   }
 
-  async findAll() {
-    return this.prisma.developer.findMany();
+  async findAll(sortBy?: SortByParams) {
+    const { field = "lastName", direction = "desc" } = sortBy || {};
+    return this.prisma.developer.findMany({
+      orderBy: { [field]: direction },
+    });
   }
 
   async findByFilter(filter?: DeveloperFilterInput) {

@@ -7,18 +7,18 @@ type Developer {
 }
 
 type Skill {
-  language: String!
-  framework: String!
+  language: String
+  framework: String
 }
 
 input SkillInput {
-  language: String!
-  framework: String!
+  language: String
+  framework: String
 }
 
 input DeveloperFilterInput {
-  language: String!
-  framework: String!
+  language: String
+  framework: String
 }
 
 input CreateDeveloperInput {
@@ -32,8 +32,13 @@ input UpdateDeveloperInput {
   id: Int!
 }
 
+input SortByParams {
+  field: String
+  direction: String
+}
+
 type Query {
-  developers: [Developer]!
+  developers(sortBy: SortByParams): [Developer]!
   developersWithFilter(filter: DeveloperFilterInput): [Developer]!
 }
 

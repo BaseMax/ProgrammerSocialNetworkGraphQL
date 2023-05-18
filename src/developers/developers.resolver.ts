@@ -1,5 +1,5 @@
-import { Prisma } from "@prisma/client";
-import { DeveloperFilterInput } from "src/graphql";
+import { Developer, Prisma } from "@prisma/client";
+import { DeveloperFilterInput, SortByParams } from "src/graphql";
 import { Resolver, Query, Mutation, Args } from "@nestjs/graphql";
 import { DevelopersService } from "./developers.service";
 
@@ -16,8 +16,10 @@ export class DevelopersResolver {
   }
 
   @Query("developers")
-  findAll() {
-    return this.developersService.findAll();
+  findAll(
+    @Args("sortBy") sortBy?: SortByParams
+  ): Promise<Developer[]> {
+    return this.developersService.findAll(sortBy);
   }
 
   @Query("developersWithFilter")
@@ -34,8 +36,8 @@ export class DevelopersResolver {
     return this.developersService.updateDeveloper(id, updateDeveloperInput);
   }
 
-  @Mutation('removeDeveloper')
-  removeDeveloper(@Args('id') id: string) {
+  @Mutation("removeDeveloper")
+  removeDeveloper(@Args("id") id: string) {
     return this.developersService.removeDeveloper(id);
   }
 }

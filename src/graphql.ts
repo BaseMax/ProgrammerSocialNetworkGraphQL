@@ -9,13 +9,13 @@
 /* eslint-disable */
 
 export class SkillInput {
-    language: string;
-    framework: string;
+    language?: Nullable<string>;
+    framework?: Nullable<string>;
 }
 
 export class DeveloperFilterInput {
-    language: string;
-    framework: string;
+    language?: Nullable<string>;
+    framework?: Nullable<string>;
 }
 
 export class CreateDeveloperInput {
@@ -29,6 +29,11 @@ export class UpdateDeveloperInput {
     id: number;
 }
 
+export class SortByParams {
+    field?: Nullable<string>;
+    direction?: Nullable<string>;
+}
+
 export class Developer {
     id: string;
     firstName: string;
@@ -38,12 +43,12 @@ export class Developer {
 }
 
 export class Skill {
-    language: string;
-    framework: string;
+    language?: Nullable<string>;
+    framework?: Nullable<string>;
 }
 
 export abstract class IQuery {
-    abstract developers(): Nullable<Developer>[] | Promise<Nullable<Developer>[]>;
+    abstract developers(sortBy?: Nullable<SortByParams>): Nullable<Developer>[] | Promise<Nullable<Developer>[]>;
 
     abstract developersWithFilter(filter?: Nullable<DeveloperFilterInput>): Nullable<Developer>[] | Promise<Nullable<Developer>[]>;
 }

@@ -34,8 +34,8 @@ export class DevelopersResolver {
     return this.developersService.updateDeveloper(id, updateDeveloperInput);
   }
 
-  @Mutation("removeDeveloper")
-  remove(@Args("id") id: number) {
-    return this.developersService.remove(id);
+  @Mutation('removeDeveloper')
+  removeDeveloper(@Args('id') id: string) {
+    return this.developersService.removeDeveloper(id);
   }
 }

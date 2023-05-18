@@ -39,7 +39,9 @@ export class DevelopersService {
     });
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} developer`;
+  async removeDeveloper(id: string) {
+    return this.prisma.developer.delete({
+      where: { id },
+    });
   }
 }

@@ -1,23 +1,23 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "prisma/prisma.service";
-import { Prisma } from "@prisma/client";
+import { Developer, Prisma } from "@prisma/client";
 import { DeveloperFilterInput } from "src/graphql";
 import { UpdateDeveloperInput } from "./dto/update-developer.input";
 
 @Injectable()
 export class DevelopersService {
   constructor(private prisma: PrismaService) {}
-  create(createDeveloperInput: Prisma.DeveloperCreateInput) {
+  async create(data: Prisma.DeveloperCreateInput): Promise<Developer> {
     return this.prisma.developer.create({
-      data: createDeveloperInput,
+      data,
     });
   }
 
-  findAll() {
+  async findAll() {
     return this.prisma.developer.findMany();
   }
 
-  findByFilter(filter?: DeveloperFilterInput) {
+  async findByFilter(filter?: DeveloperFilterInput) {
     return this.prisma.developer.findMany({
       where: {
         skills: {
@@ -30,11 +30,11 @@ export class DevelopersService {
     });
   }
 
-  update(id: number, updateDeveloperInput: UpdateDeveloperInput) {
+  async update(id: number, updateDeveloperInput: UpdateDeveloperInput) {
     return `This action updates a #${id} developer`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} developer`;
   }
 }

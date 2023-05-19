@@ -145,7 +145,7 @@ mutation {
 
 ## Authors
 
-- Amir Hossain
+- Amirhossein Malekian
 - Max Base
 
 Copyright 2023, Max Base

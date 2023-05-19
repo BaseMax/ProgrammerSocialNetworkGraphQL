@@ -8,10 +8,11 @@ async function main() {
       firstName: "John",
       lastName: "Doe",
       email: "john.doe@example.com",
-      skills: {
-        "language": "Typescript",
-        "framework": "NestJS",
-      },
+      password: "password123",
+      skills: [
+        { language: "Typescript", framework: "NestJS" },
+        { language: "Javascript", framework: "React" },
+      ],
     },
   });
 

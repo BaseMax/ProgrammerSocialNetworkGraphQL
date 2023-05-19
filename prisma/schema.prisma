@@ -16,6 +16,7 @@ model Developer {
   firstName String
   lastName String
   email String @unique
+  password String
   skills Skill[]
 }
 

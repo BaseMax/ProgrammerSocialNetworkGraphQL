@@ -22,6 +22,7 @@ export class CreateDeveloperInput {
     firstName: string;
     lastName: string;
     email: string;
+    password: string;
     skills: SkillInput[];
 }
 
@@ -34,17 +35,34 @@ export class SortByParams {
     direction?: Nullable<string>;
 }
 
+export class RegisterInput {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+}
+
+export class LoginInput {
+    email: string;
+    password: string;
+}
+
 export class Developer {
     id: string;
     firstName: string;
     lastName: string;
     email: string;
+    password: string;
     skills: Skill[];
 }
 
 export class Skill {
     language?: Nullable<string>;
     framework?: Nullable<string>;
+}
+
+export class AuthPayload {
+    token: string;
 }
 
 export abstract class IQuery {
@@ -59,6 +77,10 @@ export abstract class IMutation {
     abstract updateDeveloper(updateDeveloperInput: UpdateDeveloperInput): Developer | Promise<Developer>;
 
     abstract removeDeveloper(id: number): Nullable<Developer> | Promise<Nullable<Developer>>;
+
+    abstract register(input: RegisterInput): AuthPayload | Promise<AuthPayload>;
+
+    abstract login(input: LoginInput): AuthPayload | Promise<AuthPayload>;
 }
 
 type Nullable<T> = T | null;
